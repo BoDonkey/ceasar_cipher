@@ -28,6 +28,26 @@ def caesar_cipher(original_string, shift_factor)
 	puts code_string
 end
 
+def caesar_cipher_akpark(str, num)
+
+	result = str.split("")
+	result.map! do |char|
+		if char == ' '
+			' '
+		else
+			if ('A'..'Z').include?(char)
+				((char.ord+num-90)%26+64).chr
+			elsif ('a'..'z').include?(char)
+				((char.ord+num-122)%26+96).chr
+			else
+				char
+			end 
+		end
+	end
+	result.join("")
+
+end
+
 puts "Input your secret message"
 secret_message = gets.chomp
 puts "Input the shift factor"
